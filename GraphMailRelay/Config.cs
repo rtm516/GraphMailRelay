@@ -7,11 +7,12 @@ namespace GraphMailRelay
 {
 	internal class Config
 	{
+		public string ListenAddress { get; set; } = "0.0.0.0";
 		public bool AuthenticationRequired { get; set; } = true;
 		public string TenantId { get; set; } = string.Empty;
 		public string ClientId { get; set; } = string.Empty;
 		public string ClientSecret { get; set; } = string.Empty;
-		public string CertificatePath { get; set; } = string.Empty;
+		public string CertificatePath { get; set; } = "certificate.pfx";
 		public string CertificatePassword { get; set; } = string.Empty;
 		public bool AllowUnencrypted { get; set; } = false;
 		public bool AllowSsl { get; set; } = false;

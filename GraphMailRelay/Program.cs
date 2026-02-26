@@ -38,14 +38,16 @@ namespace GraphMailRelay
 
 			Log.Information("Setting up SMTP server");
 			var certificate = CreateCertificate();
+			var listenIp = IPAddress.Parse(Config.Instance.ListenAddress);
 
 			var builder = new SmtpServerOptionsBuilder()
-				.ServerName("localhost");
+				.ServerName(Environment.MachineName);
 
 			if (Config.Instance.AllowUnencrypted) {
 				builder.Endpoint(builder =>
 					builder
-						.Port(25, false)
+						.Endpoint(new IPEndPoint(listenIp, 25))
+						.IsSecure(false)
 						.AllowUnsecureAuthentication(true)
 						.AuthenticationRequired(Config.Instance.AuthenticationRequired));
 			}
@@ -54,7 +56,8 @@ namespace GraphMailRelay
 			{
 				builder.Endpoint(builder =>
 					builder
-						.Port(465, true)
+						.Endpoint(new IPEndPoint(listenIp, 465))
+						.IsSecure(true)
 						.AuthenticationRequired(Config.Instance.AuthenticationRequired)
 						.Certificate(certificate));
 			}
@@ -63,7 +66,8 @@ namespace GraphMailRelay
 			{
 				builder.Endpoint(builder =>
 					builder
-						.Port(587, false)
+						.Endpoint(new IPEndPoint(listenIp, 587))
+						.IsSecure(false)
 						.AllowUnsecureAuthentication(false)
 						.AuthenticationRequired(Config.Instance.AuthenticationRequired)
 						.Certificate(certificate));
@@ -85,7 +89,7 @@ namespace GraphMailRelay
 			smtpServer.SessionCreated += SessionCreated;
 			var serverTask = smtpServer.StartAsync(CancellationToken.None);
 
-			Log.Information("SMTP server started. Listening on ports {ports}.", string.Join(", ", options.Endpoints.Select(e => e.Endpoint.Port)));
+			Log.Information("SMTP server started. Listening on {ip} on ports {ports}.", Config.Instance.ListenAddress, string.Join(", ", options.Endpoints.Select(e => e.Endpoint.Port)));
 
 			await serverTask;
 
