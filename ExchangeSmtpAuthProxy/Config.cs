@@ -10,15 +10,15 @@ namespace ExchangeSmtpAuthProxy
 {
 	internal class Config
 	{
-		public bool AuthenticationRequired { get; set; }
-		public string TenantId { get; set; }
-		public string ClientId { get; set; }
-		public string ClientSecret { get; set; }
-		public string CertificatePath { get; set; }
-		public string CertificatePassword { get; set; }
-		public bool AllowUnencrypted { get; set; }
-		public bool AllowSsl { get; set; }
-		public bool AllowStartTls { get; set; }
+		public bool AuthenticationRequired { get; set; } = true;
+		public string TenantId { get; set; } = string.Empty;
+		public string ClientId { get; set; } = string.Empty;
+		public string ClientSecret { get; set; } = string.Empty;
+		public string CertificatePath { get; set; } = string.Empty;
+		public string CertificatePassword { get; set; } = string.Empty;
+		public bool AllowUnencrypted { get; set; } = false;
+		public bool AllowSsl { get; set; } = false;
+		public bool AllowStartTls { get; set; } = true;
 
 		public static Config Instance { get; } = Build();
 
