@@ -20,8 +20,7 @@ namespace GraphMailRelay
 			// TODO Replace with non-windows compatable method
 			using (PrincipalContext principalContext = new PrincipalContext(ContextType.Domain))
 			{
-				context.Logger.Information(principalContext.ConnectedServer);
-				//valid = principalContext.ValidateCredentials(username, password);
+				valid = principalContext.ValidateCredentials(username, password);
 				if (valid) method = "AD";
 			}
 
