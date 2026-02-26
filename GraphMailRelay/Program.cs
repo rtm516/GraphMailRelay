@@ -52,7 +52,7 @@ namespace GraphMailRelay
 						.AuthenticationRequired(Config.Instance.AuthenticationRequired));
 			}
 
-			if (Config.Instance.AllowUnencrypted)
+			if (Config.Instance.AllowSsl)
 			{
 				builder.Endpoint(builder =>
 					builder
@@ -62,7 +62,7 @@ namespace GraphMailRelay
 						.Certificate(certificate));
 			}
 
-			if (Config.Instance.AllowUnencrypted)
+			if (Config.Instance.AllowStartTls)
 			{
 				builder.Endpoint(builder =>
 					builder
