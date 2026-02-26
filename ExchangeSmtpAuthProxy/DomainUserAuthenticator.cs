@@ -7,16 +7,6 @@ namespace ExchangeSmtpAuthProxy
 {
 	internal class DomainUserAuthenticator : IUserAuthenticator
 	{
-		class InlineHttpClientFactory : IMsalHttpClientFactory
-		{
-			private readonly HttpClient _client;
-			public InlineHttpClientFactory() => _client = new HttpClient(new HttpClientHandler
-			{
-				ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-			});
-			public HttpClient GetHttpClient() => _client;
-		}
-
 		public async Task<bool> AuthenticateAsync(ISessionContext context, string username, string password, CancellationToken cancellationToken)
 		{
 			// If authentication is not required, allow all users
@@ -43,7 +33,6 @@ namespace ExchangeSmtpAuthProxy
 					.WithClientSecret(Config.Instance.ClientSecret)
 					.WithTenantId(Config.Instance.TenantId)
 					.WithAuthority(AzureCloudInstance.AzurePublic, Config.Instance.TenantId)
-					.WithHttpClientFactory(new InlineHttpClientFactory())
 					.Build();
 
 				try
