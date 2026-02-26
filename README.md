@@ -32,7 +32,7 @@ All configuration is done via the `appsettings.json` file. The following paramet
 | TenantId | The tenant ID of the Azure AD application. |
 | ClientId | The client ID of the Azure AD application. |
 | ClientSecret | The client secret of the Azure AD application. |
-| CertificatePath | The path to the certificate file (PFX) for authentication. |
+| CertificatePath | The path to the certificate file (PFX) for SSL and StartTLS. |
 | CertificatePassword | The password for the certificate file. |
 | AllowUnencrypted | Whether to allow unencrypted connections (port 25). |
 | AllowSsl | Whether to allow SSL/TLS connections (port 465). |
