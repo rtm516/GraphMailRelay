@@ -1,7 +1,7 @@
 # Graph Mail Relay
 This is a simple SMTP server that relays emails via Graph API. Its designed as a work around for legacy applications for the upcoming deprecation of basic authentication for SMTP. It can be used as a drop in replacement for an existing SMTP server.
 
-It supports unencrypted connections on port 25, SSL/TLS connections on port 465, and STARTTLS connections on port 587. Authentication is optional and can be configured to require a username and password or to allow anonymous access.
+It supports unencrypted connections on port 25, SSL/TLS connections on port 465, and StartTLS connections on port 587. Authentication is optional and can be configured to require a username and password or to allow anonymous access.
 
 Authentication when enabled is done via local AD first and then via Azure AD for accounts that are Azure only like shared mailboxes. If the Azure account has MFA enabled then authentication will fail as the flow used for password validation in Azure does not support MFA.
 
@@ -28,12 +28,12 @@ To use this application, you need to register an application in Azure AD and gra
 All configuration is done via the `appsettings.json` file. The following parameters are available:
 | Parameter | Description |
 | --- | --- |
-| AuthenticationRequired | Whether to require authentication for sending emails. If turned off authentication can still be passed but passwords are not validated. |
-| TenantId | The tenant ID of the Azure AD application. |
-| ClientId | The client ID of the Azure AD application. |
-| ClientSecret | The client secret of the Azure AD application. |
-| CertificatePath | The path to the certificate file (PFX) for SSL and StartTLS. |
-| CertificatePassword | The password for the certificate file. |
-| AllowUnencrypted | Whether to allow unencrypted connections (port 25). |
-| AllowSsl | Whether to allow SSL/TLS connections (port 465). |
-| AllowStartTls | Whether to allow STARTTLS connections (port 587). |
+| `AuthenticationRequired` | Whether to require authentication for sending emails. If turned off authentication can still be passed but passwords are not validated. |
+| `TenantId` | The tenant ID of the Azure AD application. |
+| `ClientId` | The client ID of the Azure AD application. |
+| `ClientSecret` | The client secret of the Azure AD application. |
+| `CertificatePath` | The path to the certificate file (PFX) for SSL and StartTLS. |
+| `CertificatePassword` | The password for the certificate file. |
+| `AllowUnencrypted` | Whether to allow unencrypted connections (port 25). |
+| `AllowSsl` | Whether to allow SSL/TLS connections (port 465). |
+| `AllowStartTls` | Whether to allow STARTTLS connections (port 587). |
