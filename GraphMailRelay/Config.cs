@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
-using System.Text.Json;
 
-namespace ExchangeSmtpAuthProxy
+namespace GraphMailRelay
 {
 	internal class Config
 	{

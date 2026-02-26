@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ExchangeSmtpAuthProxy
+namespace GraphMailRelay
 {
 	public static class MimeMessageConverter
 	{

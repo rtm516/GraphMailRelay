@@ -2,7 +2,6 @@
 using Serilog.Events;
 using SmtpServer;
 using SmtpServer.ComponentModel;
-using SmtpServer.Tracing;
 using System.Diagnostics;
 using System.Net;
 using System.Reflection;
@@ -10,7 +9,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace ExchangeSmtpAuthProxy
+namespace GraphMailRelay
 {
     internal class Program
     {

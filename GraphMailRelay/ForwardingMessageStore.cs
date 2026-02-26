@@ -13,7 +13,7 @@ using SmtpServer.Storage;
 using System.Buffers;
 using System.Net;
 
-namespace ExchangeSmtpAuthProxy
+namespace GraphMailRelay
 {
 	internal class ForwardingMessageStore : IMessageStore
 	{

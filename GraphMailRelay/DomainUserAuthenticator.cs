@@ -3,7 +3,7 @@ using SmtpServer;
 using SmtpServer.Authentication;
 using System.DirectoryServices.AccountManagement;
 
-namespace ExchangeSmtpAuthProxy
+namespace GraphMailRelay
 {
 	internal class DomainUserAuthenticator : IUserAuthenticator
 	{

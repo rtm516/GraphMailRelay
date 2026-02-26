@@ -1,4 +1,4 @@
-# Exchange SMTP Authentication Proxy
+# Graph Mail Relay
 This is a simple SMTP server that relays emails via Graph API. Its designed as a work around for legacy applications for the upcoming deprecation of basic authentication for SMTP. It can be used as a drop in replacement for an existing SMTP server.
 
 It supports unencrypted connections on port 25, SSL/TLS connections on port 465, and STARTTLS connections on port 587. Authentication is optional and can be configured to require a username and password or to allow anonymous access.
